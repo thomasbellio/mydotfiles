@@ -1,0 +1,23 @@
+Layer 1
+colo=>iceblue
+function=>r_space
+alt+h=>backspace
+left_alt=>CMD
+esc=>fn+esc
+fn+esc=>esc
+
+Layer 2
+color=>teal
+function=>r_space
+fn+h=>backspace
+left_alt=>CMD
+esc=>fn+esc
+fn+esc=>esc/
+
+Layer 3
+colo=> pink
+function=>r_space
+alt+h=>backspace
+left_alt=>CMD
+esc=>fn+esc
+fn+esc=>esc
