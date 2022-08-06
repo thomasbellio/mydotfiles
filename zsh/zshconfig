@@ -149,6 +149,7 @@ clean_aws_creds() {
 	unset AWS_SECRET_ACCESS_KEY
 	unset AWS_SESSION_TOKEN
 }
+
 print_plist() {
 	PlistBuddy -x -c "Print" $1
 }
@@ -162,8 +163,15 @@ get_secret_values() {
 	cat $2
 }
 
+#
+#Creates a file and ensures it has permissions to be executed
+#
+#
+create_executable() {
+	touch $1 &&
+	chmod +x $1
 
-
+}
 
 
 alias ls="ls -alhG" 
