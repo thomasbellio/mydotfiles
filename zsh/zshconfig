@@ -163,6 +163,12 @@ get_secret_values() {
 	cat $2
 }
 
+
+create_public_repo_gh() {
+	gh repo create --source  $(pwd) --public $2 
+
+}
+
 #
 #Creates a file and ensures it has permissions to be executed
 #
