@@ -181,15 +181,27 @@ create_executable() {
 
 
 alias ls="ls -alhG" 
-eval "$(pyenv init -)"
-source <(kubectl completion zsh)
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/local/bin/packer packer
+
+if hash pyenv 2>/dev/null; then
+    eval "$(pyenv init -)"
+else
+    echo "pyenv not found...skipping pyenv"
+fi
+
+
+if hash kubectl 2>/dev/null; then
+    source <(kubectl completion zsh)
+    compdef _kubectl kubectl
+else
+    echo "Kubectl not found...skipping kubectl completion"
+fi
 # kubectl completion
 #
 #
 #compdef kubectl
-compdef _kubectl kubectl
+
 
 # Copyright 2016 The Kubernetes Authors.
 #
@@ -562,7 +574,13 @@ _helm()
 if [ "$funcstack[1]" = "_helm" ]; then
     _helm
 fi
-compdef _helm helm
+
+if hash helm 2>/dev/null; then
+    compdef _helm helm
+else
+    echo "Helm not found...skipping helm completion"
+fi
+
 
 # makes man pages not suck
 export LESS_TERMCAP_mb=$'\e[1;32m'
