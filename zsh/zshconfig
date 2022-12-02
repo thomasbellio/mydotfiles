@@ -618,3 +618,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 echo "source of zsh file completed"
+
+# Created by `pipx` on 2022-12-02 15:29:14
+# created by running `python3 -m pipx ensurepath`
+export PATH="$PATH:$HOME/Library/Python/3.9/bin"
