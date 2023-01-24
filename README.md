@@ -6,4 +6,4 @@ It includes:
 
 <!-- - [vim](vim/README.md) -->
 
-- [zsh](zsh/README.MD)
+- [zsh](zsh/README.md)
