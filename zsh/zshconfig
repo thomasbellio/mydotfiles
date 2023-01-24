@@ -198,11 +198,11 @@ alias ls="ls -alhG"
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/local/bin/packer packer
 
-if hash pyenv 2>/dev/null; then
-    eval "$(pyenv init -)"
-else
-    echo "pyenv not found...skipping pyenv"
-fi
+# if hash pyenv 2>/dev/null; then
+#     eval "$(pyenv init -)"
+# else
+#     echo "pyenv not found...skipping pyenv"
+# fi
 
 
 if hash kubectl 2>/dev/null; then
@@ -622,3 +622,5 @@ echo "source of zsh file completed"
 # Created by `pipx` on 2022-12-02 15:29:14
 # created by running `python3 -m pipx ensurepath`
 export PATH="$PATH:$HOME/Library/Python/3.9/bin"
+# from pipx completions
+eval "$(register-python-argcomplete pipx)"
