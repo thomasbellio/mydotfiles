@@ -6,6 +6,13 @@ SAVEHIST=10000
 fpath+=($HOME/.zsh/pure)
 # .zshrc
 autoload -U promptinit; promptinit
+# change the path color
+zstyle :prompt:pure:path color green
+zstyle ':prompt:pure:prompt:*' color yellow
+# turn on git stash status
+zstyle :prompt:pure:git:stash show yes
+zstyle :prompt:pure:git:branch color magenta
+zstyle :prompt:pure:git:dirty color red
 prompt pure
 PURE_PROMPT_SYMBOL=$
 setopt autocd extendedglob nomatch
@@ -498,3 +505,4 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 echo "source of zsh file completed"
+export PAGER="most"
