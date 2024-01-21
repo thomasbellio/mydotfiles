@@ -19,7 +19,6 @@ prompt pure
 PURE_PROMPT_SYMBOL=$
 setopt autocd extendedglob nomatch
 unsetopt beep
-bindkey -v
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
 zstyle :compinstall filename '/home/thomas/.zshrc'
