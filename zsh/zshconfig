@@ -507,3 +507,4 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 echo "source of zsh file completed"
 export PAGER="most"
+source ${(q-)HOME}/shell-plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
