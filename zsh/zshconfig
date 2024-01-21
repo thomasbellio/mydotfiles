@@ -14,7 +14,7 @@ zstyle :prompt:pure:git:stash show yes
 zstyle :prompt:pure:git:branch color magenta
 zstyle :prompt:pure:git:dirty color red
 # RPROMPT='%*'
-RPROMPT='%F{yellow}%*%f'
+RPROMPT='%F{blue}%*%f'
 prompt pure
 PURE_PROMPT_SYMBOL=$
 setopt autocd extendedglob nomatch
