@@ -1,6 +1,8 @@
 # About
 
-This zsh dot file contains various useful plugins and color themes
+This section contains the configuration for how I currently have my zsh terminal configured for my personal workstation.
+
+This is always a work in process and will evolve overtime. Currently I don't have a lot of automation for installation of various components but I will opportunistically add that capability as I have time.
 
 ## Dependencies
 
@@ -8,7 +10,13 @@ The zsh config has several tools that it loads below is a list of tools that you
 
 If you don't want those components you can just comment out the relevant components in the [zshconfig](./zshconfig)
 
-- [oh-my-zsh](https://ohmyz.sh/#install)
+Required:
+
+- [pure](https://github.com/sindresorhus/pure)
+- [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting/tree/master)
+
+Optional:
+
 - [krew](https://github.com/kubernetes-sigs/krew)
 - [kubectl](https://kubernetes.io/docs/tasks/tools/)
 
