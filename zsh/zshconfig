@@ -28,11 +28,10 @@ compinit
 # End of lines added by compinstall
 eval "$(direnv hook zsh)"
 # ALIASES
-alias ls="ls -alh"
 alias gs="git status"
 alias zource="source ~/.zshrc"
-alias zshvim="vim ~/.zshrc"
-
+alias zv="vim ~/.zshrc"
+alias ls="ls -alhG --color=auto" 
 commit(){
      git commit -m"$1"
 }
@@ -91,7 +90,6 @@ get_secret_values() {
 }
 
 
-alias ls="ls -alhG" 
 autoload -U +X bashcompinit && bashcompinit
 
 if hash kubectl 2>/dev/null; then
