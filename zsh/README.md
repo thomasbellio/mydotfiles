@@ -17,8 +17,8 @@ Required:
 
 Optional:
 
-- [krew](https://github.com/kubernetes-sigs/krew)
 - [kubectl](https://kubernetes.io/docs/tasks/tools/)
+- [krew](https://github.com/kubernetes-sigs/krew)
 
 ## Setup
 
