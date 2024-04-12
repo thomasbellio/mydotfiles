@@ -35,6 +35,7 @@ alias zv="nvim ~/.zshrc"
 alias ls="ls -alhG --color=auto"
 alias ls="ls -alhG --color=auto" 
 alias v="nvim"
+alias push="git push"
 
 commit(){
      git commit -m"$1"
