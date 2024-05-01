@@ -6,6 +6,5 @@ These terminal leverages pure prompt in conjunction with zsh
 
 It includes:
 
-
-
 - [zsh](zsh)
+- [tmux](tmux)
