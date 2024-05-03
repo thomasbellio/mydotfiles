@@ -549,5 +549,7 @@ source ${(q-)HOME}/shell-plugins/zsh-syntax-highlighting/zsh-syntax-highlighting
 source ${(q-)HOME}/shell-plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 source $HOME/.cargo/env
+## Git Config
+git config --global core.editor nvim
 echo "source of zsh file completed"
 
