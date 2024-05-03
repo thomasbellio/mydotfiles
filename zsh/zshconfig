@@ -14,16 +14,17 @@ zstyle ':prompt:pure:prompt:*' color yellow
 zstyle :prompt:pure:git:stash show yes
 zstyle :prompt:pure:git:branch color magenta
 zstyle :prompt:pure:git:dirty color red
+
 # RPROMPT='%*'
 RPROMPT='%F{blue}%*%f'
 prompt pure
+# export PS1="$PS1 [code-base]"
 PURE_PROMPT_SYMBOL=$
 setopt autocd extendedglob nomatch
 unsetopt beep
 # End of lines configured by zsh-newuser-install
 # The following lines were added by compinstall
 zstyle :compinstall filename '/home/thomas/.zshrc'
-
 autoload -Uz compinit
 compinit
 # End of lines added by compinstall
@@ -39,6 +40,8 @@ alias v="nvim"
 alias push="git push"
 alias kn="kubectl neat"
 alias k="kubectl"
+
+
 commit(){
      git commit -m"$1"
 }
@@ -541,8 +544,10 @@ export PATH="$PATH:/opt/nvim-linux64/bin"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-export PAGER="most"
+export PAGER="less"
 source ${(q-)HOME}/shell-plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ${(q-)HOME}/shell-plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
+source $HOME/.cargo/env
 echo "source of zsh file completed"
+
