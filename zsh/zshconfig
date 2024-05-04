@@ -5,6 +5,7 @@ SAVEHIST=10000
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 # .zshrc
 fpath+=($HOME/.zsh/pure)
+
 # .zshrc
 autoload -U promptinit; promptinit
 # change the path color
@@ -18,6 +19,23 @@ zstyle :prompt:pure:git:dirty color red
 # RPROMPT='%*'
 RPROMPT='%F{blue}%*%f'
 prompt pure
+
+# This allows us to update the PS1 value idempotently
+# Because we have the previous value and we can use it in the precmd_add_nix_shell_info
+original_pure_ps1=$PS1
+# precmd_functions+=(precmd_add_nix_shell_info)
+function precmd_add_nix_shell_info() {
+  if [[ -n "$IN_NIX_SHELL" ]]; then
+    ps1_nix_shell_info=$(echo "%F{yellow}$IN_NIX_SHELL>%f ")
+    PS1="${original_pure_ps1}${ps1_nix_shell_info}"
+  fi
+}
+
+# Check if the function is already in the array
+if [[ ${precmd_functions[(ie)precmd_add_nix_shell_info]} -gt ${#precmd_functions} ]]; then
+  precmd_functions+=(precmd_add_nix_shell_info)
+fi
+
 # export PS1="$PS1 [code-base]"
 PURE_PROMPT_SYMBOL=$
 setopt autocd extendedglob nomatch
@@ -40,7 +58,6 @@ alias v="nvim"
 alias push="git push"
 alias kn="kubectl neat"
 alias k="kubectl"
-
 
 commit(){
      git commit -m"$1"
