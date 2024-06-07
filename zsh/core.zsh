@@ -1,9 +1,9 @@
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
-HISTSIZE=100000
+HISTSIZE=10000
 SAVEHIST=10000
-setopt autocd extendedglob nomatch
 unsetopt beep
-autoload -U +X bashcompinit && bashcompinit
+# the +X enables tracing for debugging autoload -U +X bashcompinit && bashcompinit
+autoload -U  bashcompinit && bashcompinit
 
 
