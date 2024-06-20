@@ -8,4 +8,5 @@ alias v="nvim"
 alias push="git push"
 alias kn="kubectl neat"
 alias k="kubectl"
-
+alias kgp="kubectl get pods" 
+alias kgd="kubectl get deployments"
