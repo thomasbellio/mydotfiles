@@ -8,7 +8,7 @@ Tmux also enables multiple terminal panes within a single session. There are als
 
 * [tmux plugin manager (tpm)](https://github.com/tmux-plugins/tpm)
 * [tmux theme pack](https://github.com/jimeh/tmux-themepack)
-
+* [Powerline Fonts](https://powerline.readthedocs.io/en/latest/installation/linux.html#fonts-installation)
 ## Setup
 
 ### Tmux Plugin Manager

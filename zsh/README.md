@@ -12,8 +12,10 @@ If you don't want those components you can just comment out the relevant compone
 
 Required:
 
+- [zsh](https://zsh.org)
 - [pure](https://github.com/sindresorhus/pure)
 - [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting/tree/master)
+- [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
 
 Optional:
 
@@ -21,6 +23,21 @@ Optional:
 - [krew](https://github.com/kubernetes-sigs/krew)
 
 ## Setup
+
+This setup requires that you have zsh installed and it is set as your default shell. To install on ubuntu simply run:
+
+```sh
+sudo apt update -y &&
+sudo apt install -y zsh
+```
+
+To set it as the default shell run:
+
+```sh
+chsh -s $(which zsh)
+
+```
+You will need to reboot after you change the shell.
 
 You have a couple of options for setting up locally. The simplest option is to copy the contents of [zshconfig](./zshconfig) to your `~/.zshrc` file.
 
