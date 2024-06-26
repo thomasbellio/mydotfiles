@@ -386,3 +386,4 @@ if hash helm 2>/dev/null; then
 else
     echo "Helm not found...skipping helm completion"
 fi
+complete -o nospace -C /opt/terragrunt terragrunt

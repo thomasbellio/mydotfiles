@@ -9,11 +9,3 @@ source $HOME/code/mydotfiles/zsh/plugins.zsh
 source $HOME/code/mydotfiles/zsh/gcloud.zsh
 
 echo "source of zsh file completed"
-
-
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/home/thomasbell/code/mydotfiles/utilities/google-cloud-sdk/path.zsh.inc' ]; then . '/home/thomasbell/code/mydotfiles/utilities/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/home/thomasbell/code/mydotfiles/utilities/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/thomasbell/code/mydotfiles/utilities/google-cloud-sdk/completion.zsh.inc'; fi
