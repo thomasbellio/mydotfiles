@@ -15,4 +15,5 @@ prompt pure
 eval "$(direnv hook zsh)"
 
 PURE_PROMPT_SYMBOL=$
+PS1='${VIRTUAL_ENV_PROMPT:+%F{cyan}$VIRTUAL_ENV_PROMPT%f '
 
