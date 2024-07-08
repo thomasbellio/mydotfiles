@@ -13,8 +13,9 @@ sudo apt install -y \
   php8.1-cli \
   php8.1-bz2 \
   php8.1-xml \
-  pkg-config
-
+  pkg-config \
+  libonig-dev
+  
 # Install php brew as documented here (https://github.com/phpbrew/phpbrew?tab=readme-ov-file#installation)
 #
 curl -L -O https://github.com/phpbrew/phpbrew/releases/latest/download/phpbrew.phar

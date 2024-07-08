@@ -5,8 +5,11 @@ source $HOME/code/mydotfiles/zsh/functions.zsh
 source $HOME/code/mydotfiles/zsh/completion.zsh
 source $HOME/code/mydotfiles/zsh/environment.zsh
 source $HOME/code/mydotfiles/zsh/plugins.zsh
+source $HOME/code/mydotfiles/zsh/hashicorp.zsh
 source $HOME/code/mydotfiles/zsh/gcloud.zsh
 source $HOME/code/mydotfiles/zsh/php.zsh
 source $HOME/code/mydotfiles/zsh/prompt.zsh
 
 echo "source of zsh file completed"
+
+
