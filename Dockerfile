@@ -16,17 +16,17 @@ RUN echo "Host github.com\n\tStrictHostKeyChecking no\n" >> /root/.ssh/config &&
 
 WORKDIR /root/code/
 
-RUN git config --global user.email "thomas@thomasbell.io" && \
-    git config --global user.name "Thomas Bell" && \
+ADD ./zsh/zshconfig-v2 /root/.zshrc
+
+RUN git config --global --add safe.directory '*' && \
     git clone -b version-2 https://github.com/thomasbellio/mydotfiles.git && \
+    rm /root/.zshrc && \
     ln -s /root/code/mydotfiles/zsh/zshfeatures /root/.zshfeatures && \
     ln -s /root/code/mydotfiles/zsh/zshconfig-v2 /root/.zshrc
 # Set up git configuration
 WORKDIR /root
 
 
-# ADD ./zsh/zshfeatures /root/.zshfeatures
-# ADD ./zsh/zshconfig-v2 /root/.zshrc
 
 # Default command (can be overridden)
 CMD ["sleep", "infinity"]

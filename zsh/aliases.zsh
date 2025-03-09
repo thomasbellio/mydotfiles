@@ -1,12 +1,8 @@
 # ALIASES
-
+_feature_debug "Sourcing zsh/aliases.zsh"
 alias zource="source ~/.zshrc"
 alias zv="nvim ~/.zshrc"
 alias ls="ls -alhG --color=auto"
 alias v="nvim"
-alias kn="kubectl neat"
-alias k="kubectl"
-alias kgp="kubectl get pods"
-alias kgd="kubectl get deployments"
-alias kgs="kubectl get secrets"
 alias x="xclip -selection clipboard"
+_feature_debug "Sourced zsh/aliases.zsh"

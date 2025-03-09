@@ -27,6 +27,4 @@ if [[ -f $HOME/.cargo/env ]]; then
     source $HOME/.cargo/env
 fi
 
-## Git Config
-git config --global core.editor nvim
 

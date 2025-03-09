@@ -8,14 +8,12 @@ DOTFILES_DIR="${DOTFILES_DIR:-$HOME/code/mydotfiles}"
 typeset -gA ZSH_FEATURES           # Maps feature name to its dependencies
 typeset -gA ZSH_FEATURE_DIRS       # Maps feature name to its directory
 typeset -gA ZSH_FEATURE_COMPONENTS # Maps feature name to its components (arrays)
-typeset -gA ZSH_FEATURE_ENABLED    # Maps feature name to enable status (0/1)
-typeset -gA ZSH_FEATURE_MISSING    # Maps feature name to missing dependencies
 
 # Debug mode (set to 1 to enable verbose logging)
 ZSH_FEATURE_DEBUG=${ZSH_FEATURE_DEBUG:-0}
 
 # Standard component types
-ZSH_COMPONENT_TYPES=("core" "aliases" "completions" "functions" "environment")
+ZSH_COMPONENT_TYPES=("core" "aliases" "completions" "functions" "environment", "config")
 
 # Function to log debug messages
 function _feature_debug() {
