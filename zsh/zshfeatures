@@ -2,10 +2,10 @@
 # Set to 1 to enable, 0 to disable
 
 # Core system
-ZSH_FEATURE_ENABLED[core]=1
+# ZSH_FEATURE_ENABLED[core]=1
 
 # Applications
-ZSH_FEATURE_ENABLED[git]=1
+# ZSH_FEATURE_ENABLED[git]=1
 # ZSH_FEATURE_ENABLED[gcloud]=1
 # ZSH_FEATURE_ENABLED[kubernetes]=1
 #

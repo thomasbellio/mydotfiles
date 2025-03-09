@@ -1,3 +1,4 @@
+_feature_debug "Sourcing zsh/completion.zsh"
 if hash kubectl 2>/dev/null; then
     source <(kubectl completion zsh)
     compdef _kubectl kubectl
@@ -387,3 +388,4 @@ else
     echo "Helm not found...skipping helm completion"
 fi
 complete -o nospace -C /opt/terragrunt terragrunt
+_feature_debug "Sourced zsh/completion.zsh"
