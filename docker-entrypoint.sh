@@ -8,7 +8,7 @@ eval $(ssh-agent -s)
 if [ -f /root/.ssh/id_git ]; then
     # Set proper permissions on SSH key
     chmod 600 /root/.ssh/id_git
-    
+
     # Add key to agent (without prompt)
     echo "Adding SSH key to agent..."
     ssh-add /root/.ssh/id_git
