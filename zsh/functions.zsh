@@ -1,6 +1,3 @@
-commit(){
-     git commit -m"$1"
-}
 
 base_64_encode(){
     $ENCODE=$(echo -n "$1" | base64)
@@ -47,7 +44,7 @@ clean_aws_creds() {
 }
 
 my_ip() {
-	dig +short myip.opendns.com @resolver1.opendns.commit 
+	dig +short myip.opendns.com @resolver1.opendns.commit
 }
 
 get_secret_values() {

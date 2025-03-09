@@ -1,0 +1,23 @@
+# Set the dotfiles directory
+export DOTFILES_DIR="$HOME/code/mydotfiles"
+export ZSH_FEATURE_DEBUG=1
+# Source the feature manager
+source $DOTFILES_DIR/zsh/feature-manager.zsh
+
+# Register core system features
+register_feature "core" "$DOTFILES_DIR/zsh" # Core ZSH functionality, no dependencies
+
+# Register application features
+register_feature "git" "$DOTFILES_DIR/zsh/git"
+# register_feature "gcloud" "" "gcloud"
+# register_feature "kubernetes" "" "kubectl"
+
+# Register nested features
+# register_nested_feature "hashicorp" "packer" "" "packer"
+# register_nested_feature "hashicorp" "terraform" "" "terraform"
+
+# Load enabled features
+load_features
+
+# Display confirmation
+echo "ZSH configuration loaded successfully"
