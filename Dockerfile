@@ -20,8 +20,5 @@ RUN echo "Host github.com\n\tStrictHostKeyChecking no\n" >> /root/.ssh/config &&
 COPY docker-entrypoint.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/docker-entrypoint.sh
 
-# Set the entrypoint
-# ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
-
 # Default command (can be overridden)
 CMD ["sleep", "infinity"]
