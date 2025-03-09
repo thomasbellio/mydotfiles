@@ -1,8 +1,12 @@
 FROM ubuntu
 
 # Install necessary packages
-RUN apt update -y && \
+RUN yes | unminimize && \
+    apt update -y && \
+    apt install -y man-db && \
+    apt install -y npm && \
     apt install -y git ssh openssh-client curl zsh && \
+    npm install --global pure-prompt && \
     chsh -s $(which zsh) && \
     mkdir -p /root/.ssh && \
     mkdir -p /root/code/ && \

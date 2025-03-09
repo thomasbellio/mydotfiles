@@ -13,7 +13,7 @@ typeset -gA ZSH_FEATURE_COMPONENTS # Maps feature name to its components (arrays
 ZSH_FEATURE_DEBUG=${ZSH_FEATURE_DEBUG:-0}
 
 # Standard component types
-ZSH_COMPONENT_TYPES=("core" "aliases" "completions" "functions" "environment", "config")
+ZSH_COMPONENT_TYPES=("bootstrap" "core" "aliases" "functions" "completions" "environment" "config", "plugins" "prompt")
 
 # Function to log debug messages
 function _feature_debug() {
