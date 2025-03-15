@@ -21,4 +21,6 @@ function cloneRepo() {
 cloneRepo "https://github.com/zsh-users/zsh-syntax-highlighting.git" "${HOME}/shell-plugins" "/zsh-syntax-highlighting"
 cloneRepo "https://github.com/zsh-users/zsh-autosuggestions.git" "${HOME}/shell-plugins" "/zsh-autosuggestions/"
 
+cloneRepo "https://github.com/sindresorhus/pure.git" "${HOME}/.zsh" "/pure/"
+
 
