@@ -1,5 +1,5 @@
 # Set the dotfiles directory
-export DOTFILES_DIR="$HOME/code/mydotfiles"
+export DOTFILES_DIR="$HOME/mydotfiles"
 # export ZSH_FEATURE_DEBUG=1
 # Source the feature manager
 source $DOTFILES_DIR/zsh/feature-manager.zsh
