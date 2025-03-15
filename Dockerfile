@@ -1,4 +1,5 @@
 FROM ubuntu
+
 # Create devel user with sudo privileges and matching host UID/GID
 # We use ARGs to pass in the host's user ID and group ID at build time
 ARG USER_UID=1000
@@ -33,21 +34,6 @@ RUN if getent group $USER_GID > /dev/null 2>&1; then \
     chmod 0440 /etc/sudoers.d/devel && \
     # Allow sudo to run commands as any user without requiring a password
     echo "devel ALL=(ALL:ALL) NOPASSWD:ALL" >> /etc/sudoers.d/devel
-# RUN groupadd -g $USER_GID devel && \
-#     useradd -m -u $USER_UID -g $USER_GID -s $(which zsh) devel && \
-#     echo "devel ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/devel && \
-#     chmod 0440 /etc/sudoers.d/devel && \
-#     # Allow sudo to run commands as any user without requiring a password
-#     echo "devel ALL=(ALL:ALL) NOPASSWD:ALL" >> /etc/sudoers.d/devel
-
-# # Create devel user with sudo privileges
-# RUN useradd -m devel && \
-#     echo "devel ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/devel && \
-#     chmod 0440 /etc/sudoers.d/devel && \
-#     # Allow sudo to run commands as any user without requiring a password
-#     echo "devel ALL=(ALL:ALL) NOPASSWD:ALL" >> /etc/sudoers.d/devel && \
-#     # Set the shell for devel user
-#     chsh -s $(which zsh) devel
 
 ENV PATH="$PATH:/opt/nvim-linux-x86_64/bin"
 # Configure SSH to avoid host key verification issues
