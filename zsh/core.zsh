@@ -1,6 +1,6 @@
 # Lines configured by zsh-newuser-install
 _feature_debug "Sourcing zsh/core.zsh"
-export HISTFILE=~/.histfile
+export HISTFILE=~/history/histfile
 export HISTSIZE=10000
 export SAVEHIST=10000
 unsetopt beep
