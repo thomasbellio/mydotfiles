@@ -1,22 +1,27 @@
 fpath+=($HOME/.zsh/pure)
 
 autoload -U promptinit; promptinit
-# change the path color
-# zstyle :prompt:pure:path color green
-zstyle :prompt:pure:user color green
-zstyle ':prompt:pure:prompt:*' color yellow
-# # turn on git stash status
+# Conditionally set user color based on whether user is root
+if [[ $USER == "root" ]]; then
+    # Set root user to red
+    zstyle :prompt:pure:user color '#ff00af'
+    zstyle :prompt:pure:host color '#ff00af'
+    zstyle ':prompt:pure:prompt:*' color '#ff00af'
+
+else
+    # Set regular user to yellow
+    zstyle :prompt:pure:user color yellow
+    zstyle :prompt:pure:host color blue
+    zstyle ':prompt:pure:prompt:*' color yellow
+fi
+# turn on git stash status
 zstyle :prompt:pure:git:stash show yes
 zstyle :prompt:pure:git:branch color magenta
 zstyle :prompt:pure:git:dirty color red
 #
 RPROMPT='%F{blue}%*%f'
 prompt pure
-# this is needed to enable direnv in zsh. Its possible it is causing slow down
-eval "$(direnv hook zsh)"
-
-PURE_PROMPT_SYMBOL=$
-# PS1='${VIRTUAL_ENV_PROMPT:+%F{cyan}$VIRTUAL_ENV_PROMPT%f '
-
-# Override the prompt_pure_state_setup function to never show username/hostname
-# source ${DOTFILES_DIR}/zsh/pure-config.zsh
+# Force username and hostname to always show up with appropriate colors
+prompt_pure_state[username]='%F{$prompt_pure_colors[user]}%n%f %F{$prompt_pure_colors[host]}@%m%f'
+# Then force the username to always show up
+PURE_PROMPT_SYMBOL='$'
