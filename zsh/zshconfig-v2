@@ -1,6 +1,5 @@
 # Set the dotfiles directory
 export DOTFILES_DIR="$HOME/dotfiles"
-# export ZSH_FEATURE_DEBUG=1
 # Source the feature manager
 source $DOTFILES_DIR/zsh/feature-manager.zsh
 
@@ -20,4 +19,4 @@ register_feature "git" "$DOTFILES_DIR/zsh/git"
 load_features
 
 # Display confirmation
-echo "ZSH configuration loaded successfully"
+_feature_debug "ZSH configuration loaded successfully"

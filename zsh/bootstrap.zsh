@@ -6,14 +6,14 @@ function cloneRepo() {
   _feature_debug "Setting up repo name: $repoName at: $dirPrefix/$targetDir"
     # # Check if the directory already exists
     if [ ! -d "$dirPrefix/$targetDir" ]; then
-      echo "Cloning $repoName repository..."
+      _feature_debug "Cloning $repoName repository..."
       # Create parent directory if it doesn't exist
       mkdir -p $dirPrefix
       # Clone the repository
       git clone $repoName "$dirPrefix/$targetDir"
-      echo "Repository cloned successfully to $targetDir"
+      _feature_debug "Repository cloned successfully to $targetDir"
     else
-      echo "Repository already exists at $targetDir"
+      _feature_debug "Repository already exists at $targetDir"
     fi
   _feature_debug "EXIT CLONE REPO...."
 }
