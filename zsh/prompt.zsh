@@ -2,6 +2,10 @@ fpath+=($HOME/.zsh/pure)
 
 autoload -U promptinit; promptinit
 # Conditionally set user color based on whether user is root
+if [[ -z $USER ]]; then
+    USER=$(whoami)
+fi
+
 if [[ $USER == "root" ]]; then
     # Set root user to red
     zstyle :prompt:pure:user color '#ff00af'
