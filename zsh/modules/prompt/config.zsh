@@ -1,5 +1,12 @@
-fpath+=($HOME/.zsh/pure)
+#TODO: CLONE FROM A FORK
+cloneRepo "https://github.com/sindresorhus/pure.git" "${HOME}/.zsh" "/pure/"
 
+
+if [[ ! " ${fpath[@]} " =~ " ${HOME}/.zsh/pure " ]]; then
+    fpath+=($HOME/.zsh/pure)
+fi
+
+#TODO: do I need this here?
 autoload -U promptinit; promptinit
 # Conditionally set user color based on whether user is root
 if [[ -z $USER ]]; then
