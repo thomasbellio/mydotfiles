@@ -1,2 +1,2 @@
-export OPENAPI_API_KEY="$(pass  openai/neovim-api-key)"
+export OPENAI_API_KEY="$(pass  openai/neovim-api-key)"
 

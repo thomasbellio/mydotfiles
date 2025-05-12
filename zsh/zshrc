@@ -1,16 +1,29 @@
 # Set the dotfiles directory
 export ZSH_MODULE_DEBUG=${ZSH_MODULE_DEBUG:-0}
-
+export ZSH_MODULE_PROFILE=${ZSH_MODULE_PROFILE:-"default"}
 export DOTFILES_DIR="$HOME/dotfiles"
 # Source the feature manager
-source $DOTFILES_DIR/zsh/feature-manager.zsh
+source $DOTFILES_DIR/zsh/module-manager.zsh
 
-# Register core system features
-register_module "core"  # Core ZSH functionality, no dependencies
-register_module "git"
-register_module "prompt"
-register_module "secrets"
-# Load enabled features
+# Load the appropriate profile
+if [[ -f "$DOTFILES_DIR/zsh/profiles/$ZSH_MODULE_PROFILE.zsh" ]]; then
+  _module_debug "Loading profile: $ZSH_MODULE_PROFILE"
+  source "$DOTFILES_DIR/zsh/profiles/$ZSH_MODULE_PROFILE.zsh"
+else
+  echo "Warning: Profile '$ZSH_MODULE_PROFILE' not found, falling back to default"
+  if [[ -f "$DOTFILES_DIR/zsh/profiles/default.zsh" ]]; then
+    _module_debug "Loading default profile"
+    source "$DOTFILES_DIR/zsh/profiles/default.zsh"
+  else
+    echo "Error: Default profile not found!"
+    # Load core modules as fallback
+    register_module "core"
+    register_module "git"
+    register_module "prompt"
+    register_module "secrets"
+  fi
+fi
+
 load_modules
 
 # Display confirmation

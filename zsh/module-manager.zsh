@@ -11,14 +11,14 @@ typeset -gA ZSH_REGISTERED_MODULES # Maps module name to its components (arrays)
 # Debug mode (set to 1 to enable verbose logging)
 
 function source_module() {
-  _module_debug "ENTER SOURCE MODULE FOR MODULE: $module at path $component"
-  local current_dir="$(dirname $component)"
+  _module_debug "ENTER SOURCE MODULE FOR MODULE: $module at path $module_file"
+  local current_dir="$(dirname $module_file)"
   _module_debug "Current directory: $current_dir"
 
   # Get all items in the directory
   for item in "$current_dir"/*; do
     # Skip the component file itself
-    if [[ "$item" == "$component" ]]; then
+    if [[ "$item" == "$module_file" ]]; then
       continue
     fi
 
@@ -52,36 +52,18 @@ function register_module() {
   local module=$1
   local dir="${ZSH_MODULES_DIR}/$module"
   _module_debug "Registering module: $module...."
-  # Register the module and its directory
-  # Initialize as disabled by default
 
-  # Detect available components for this module
-  local components=()
-
-  # Check for a single consolidated file
-  local module_file="$ZSH_MODULES_DIR/${module}.zsh"
-  _module_debug "Checking for module file: $module_file"
-  if [[ -f "$module_file" ]]; then
-    _module_debug "Found consolidated file for $module"
-    components+=("$module_file")
+  # Check for init file in the module directory
+  local module_file="$dir/init.zsh"
+  _module_debug "Looking for the init file: $module_file"
+  if [[ -f $module_file ]]; then
+    _module_debug "Found init file for $module"
+    ZSH_REGISTERED_MODULES[$module]=$module_file
     _module_debug "Registered the module: $module_file"
   else
-    _module_debug "Did not find consolidated file for module '$module', checking for directory: $dir"
-    # Check for init file in the module directory
-    module_file="$dir/init.zsh"
-    _module_debug "Looking for the init file: $moudle_file"
-    if [[ -f $module_file ]]; then
-        _module_debug "Found init file for $module"
-        components+=($module_file)
-        _module_debug "Registered the module: $module_file"
-    else
-        _module_debug "No init file found for $module, skipping...."
-    fi
+    _module_debug "No init file found for $module, skipping...."
   fi
 
-  # Store the components
-  ZSH_REGISTERED_MODULES[$module]="${(j:,:)components}"
-  _module_debug "Components: ${(j:, :)components}"
   _module_debug "EXIT REGISTER MODULE"
 }
 
@@ -89,24 +71,22 @@ function register_module() {
 function enable_module() {
   _module_debug "ENTER ENABLE MODULE"
   local module=$1
-    _module_debug "enabling: $module"
-  # Load each component
-  local components=(${(s:,:)ZSH_REGISTERED_MODULES[$module]})
+  _module_debug "enabling: $module"
 
-    _module_debug "enabling components for module $module: $components"
-  if [[ ${#components} -eq 0 ]]; then
-    echo "Warning: No components found for module '$module'"
+  # Load the module file
+  local module_file=${ZSH_REGISTERED_MODULES[$module]}
+
+  _module_debug "enabling module file for module $module: $module_file"
+  if [[ -z $module_file ]]; then
+    echo "Warning: No module file found for module '$module'"
   else
-    for component in $components; do
-      _module_debug "Sourcing component: $component"
-      source $component
-    done
+    _module_debug "Sourcing module file: $module_file"
+    source $module_file
   fi
   _module_debug "EXIT ENABLE MODULE"
 
   return 0
 }
-
 # Function to load all enabled modules
 function load_modules() {
   _module_debug "ENTER LOAD modules"
