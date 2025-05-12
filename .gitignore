@@ -2,5 +2,7 @@
 utilities/google-cloud-cli-linux-x86_64.tar.gz
 utilities/google-cloud-sdk
 .docker
-secrets.zsh
+todo.md
+notes.md
+scratch.txt
 

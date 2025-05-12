@@ -9,6 +9,7 @@ source $DOTFILES_DIR/zsh/feature-manager.zsh
 register_module "core"  # Core ZSH functionality, no dependencies
 register_module "git"
 register_module "prompt"
+register_module "secrets"
 # Load enabled features
 load_modules
 
