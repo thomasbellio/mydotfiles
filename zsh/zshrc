@@ -2,11 +2,11 @@
 source $DOTFILES_DIR/zsh/module-manager.zsh
 
 # Load the appropriate profile
-if [[ -f "$DOTFILES_DIR/zsh/profiles/$ZSH_MODULE_PROFILE.zsh" ]]; then
-  _module_debug "Loading profile: $ZSH_MODULE_PROFILE"
-  source "$DOTFILES_DIR/zsh/profiles/$ZSH_MODULE_PROFILE.zsh"
+if [[ -f "$DOTFILES_DIR/zsh/profiles/$DOTFILES_ZSH_MODULE_PROFILE.zsh" ]]; then
+  _module_debug "Loading profile: $DOTFILES_ZSH_MODULE_PROFILE"
+  source "$DOTFILES_DIR/zsh/profiles/$DOTFILES_ZSH_MODULE_PROFILE.zsh"
 else
-  echo "Warning: Profile '$ZSH_MODULE_PROFILE' not found, falling back to default"
+  echo "Warning: Profile '$DOTFILES_ZSH_MODULE_PROFILE' not found, falling back to default"
   if [[ -f "$DOTFILES_DIR/zsh/profiles/default.zsh" ]]; then
     _module_debug "Loading default profile"
     source "$DOTFILES_DIR/zsh/profiles/default.zsh"
