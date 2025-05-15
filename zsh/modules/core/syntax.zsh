@@ -1,8 +1,8 @@
-# TODO:   add this to a fork that I control
-cloneRepo "https://github.com/zsh-users/zsh-syntax-highlighting.git" "${HOME}/shell-plugins" "zsh-syntax-highlighting"
-cloneRepo "https://github.com/zsh-users/zsh-autosuggestions.git" "${HOME}/shell-plugins" "zsh-autosuggestions"
-source ${HOME}/shell-plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source ${HOME}/shell-plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+cloneRepo "$ZSH_DEFAULT_GIT_URL/$ZSH_DEFAULT_GIT_USER/zsh-syntax-highlighting.git" "$ZSH_SHELL_PLUGINS_DIR" "zsh-syntax-highlighting"
 
+
+cloneRepo "$ZSH_DEFAULT_GIT_URL/$ZSH_DEFAULT_GIT_USER/zsh-syntax-highlighting-catpuccin.git" "$ZSH_SHELL_PLUGINS_DIR" "zsh-syntax-highlighting-catpuccin"
+source $ZSH_SHELL_PLUGINS_DIR/zsh-syntax-highlighting-catpuccin/themes/$ZSH_SHELL_THEME-zsh-syntax-highlighting.zsh
+source ${HOME}/shell-plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 

@@ -1,5 +1,4 @@
-alias zource="source ~/.zshrc"
+alias zource="source ~/.zprofile && source ~/.zshrc"
 alias zv="nvim ~/.zshrc"
 alias ls="ls -alhG --color=auto"
-alias v="nvim"
 alias x="xclip -selection clipboard"
