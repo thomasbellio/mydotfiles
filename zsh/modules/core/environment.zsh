@@ -27,6 +27,8 @@ if [[ -f $HOME/.cargo/env ]]; then
     source $HOME/.cargo/env
 fi
 
-eval "$(direnv hook zsh)"
+if command -v direnv &> /dev/null; then
+    eval "$(direnv hook zsh)"
+fi
 
 
