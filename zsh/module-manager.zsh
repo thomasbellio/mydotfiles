@@ -1,8 +1,6 @@
 # feature-manager.zsh
 # central manager for modular ZSH configuration organized by application
 
-# Store the dotfiles directory for reference
-DOTFILES_DIR="${DOTFILES_DIR:-$HOME/code/mydotfiles}"
 ZSH_MODULES_DIR="${DOTFILES_DIR}/zsh/modules"
 # Define data structures
 typeset -gA ZSH_MODULE_DIRS       # Maps module name to its directory
