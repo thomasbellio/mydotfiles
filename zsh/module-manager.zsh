@@ -41,7 +41,7 @@ function source_module() {
 
 # Function to log debug messages
 function _module_debug() {
-  [[ $ZSH_MODULE_DEBUG -eq 1 ]] && echo "[DEBUG] $@"
+  [[ $DOTFILES_ZSH_MODULE_DEBUG -eq 1 ]] && echo "[DEBUG] $@"
 }
 
 # Function to register a module with its dependencies
