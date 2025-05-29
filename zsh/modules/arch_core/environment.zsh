@@ -26,3 +26,7 @@ if command -v direnv &> /dev/null; then
     eval "$(direnv hook zsh)"
 fi
 
+# configruation for grim -- https://gitlab.freedesktop.org/emersion/grim a screenshot utility
+export GRIM_DEFAULT_DIR="$HOME/Pictures/Screenshots"
+mkdir -p $GRIM_DEFAULT_DIR
+
