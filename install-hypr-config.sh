@@ -35,8 +35,16 @@ UWSM_TARGET_FILE="$XDG_CONFIG_HOME/uwsm/env-hyprland"
 
 DUNST_SOURCE_FILE="$(pwd)/hypr/dunst/dunstrc"
 DUNST_TARGET_FILE="$XDG_CONFIG_HOME/dunst/dunstrc"
+
+HYPRLOCK_SOURCE_FILE="$(pwd)/hypr/hyprlock.conf"
+HYPRLOCK_TARGET_FILE="$XDG_CONFIG_HOME/hypr/hyprlock.conf"
+
+HYPRLOCK_SOURCE_FILE="$(pwd)/hypr/hypridle.conf"
+HYPRLOCK_TARGET_FILE="$XDG_CONFIG_HOME/hypr/hypridle.conf"
+
 # Link configurations
 link_config 'hyprland' "$HYPR_SOURCE_FILE" "$HYPR_TARGET_FILE"
 link_config 'uwsm' "$UWSM_SOURCE_FILE" "$UWSM_TARGET_FILE"
 link_config 'dunst' "$DUNST_SOURCE_FILE" "$DUNST_TARGET_FILE"
+link_config 'hyprlock' "$HYPRLOCK_SOURCE_FILE" "$HYPRLOCK_TARGET_FILE"
 
