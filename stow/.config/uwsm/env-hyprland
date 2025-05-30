@@ -1,3 +1,4 @@
 export AQ_DRM_DEVICES="/dev/dri/card1:/dev/dri/card2"
 export GPG_TTY=$(tty)
 export GRIM_DEFAULT_DIR=$HOME/Pictures/Screenshots
+export GTK_THEME=catppuccin-mocha-flamingo-standard+default
