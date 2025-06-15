@@ -27,7 +27,21 @@ sudo stow --target="/usr/share/lxc/" .
 
 ## NixOS 
 
+## Creating the Container 
+
 Once you have stowed the configuration you can create the nixos container like this:
+
+**Note**
+
+If you already have a container created, but you want to start from scratch you can run the following commands:
+
+```sh 
+sudo chattr -R -i /var/lib/lxc/nix-developer/rootfs
+sudo lxc-destroy -n nix-developer --force 
+```
+
+
+
 
 ```sh
 sudo lxc-create --name nix-developer --template download -- --dist nixos --release 24.11 --arch amd64

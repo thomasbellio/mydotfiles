@@ -9,6 +9,7 @@
   environment.systemPackages = with pkgs; [
     stow
     git
+    neovim
     wl-clipboard
   ];
   programs.zsh = {

@@ -24,9 +24,9 @@ lxc.net.0.flags = up
 lxc.net.0.hwaddr = 10:66:6a:be:d6:47
 
 # Wayland socket sharing for things like clipboards
-lxc.mount.entry = /run/user/1000/wayland-1 run/user/1000/wayland-1 none bind,create=file 0 0
-lxc.mount.entry = /tmp/.X11-unix tmp/.X11-unix none bind,create=dir 0 0
+# lxc.mount.entry = /run/user/1000/wayland-1 run/user/1000/wayland-1 none bind,create=file 0 0
+# lxc.mount.entry = /tmp/.X11-unix tmp/.X11-unix none bind,create=dir 0 0
 
 # Environment variables needed for Wayland
-lxc.environment = WAYLAND_DISPLAY=Wayland-1
-lxc.environment = XDG_RUNTIME_DIR=/run/user/1000
+# lxc.environment = WAYLAND_DISPLAY=Wayland-1
+# lxc.environment = XDG_RUNTIME_DIR=/run/user/1000
