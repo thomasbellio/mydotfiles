@@ -10,17 +10,53 @@
     stow
     git
     neovim
+    starship
     wl-clipboard
   ];
+
+  fonts.packages = with pkgs; [
+    (nerdfonts.override { fonts = [ "0xProto" "CascadiaMono" "JetBrainsMono" ]; })
+    # nerdfonts._0xproto
+    # nerdfonts.caskaydia-mono
+    # nerdfonts.jetbrains-mono
+  ];
+
+
+  # Ensure proper runtime directory setup
+  systemd.services.setup-user-runtime = {
+    description = "Setup user runtime directories";
+    wantedBy = [ "multi-user.target" ];
+    before = [ "systemd-logind.service" ];
+    serviceConfig = {
+      Type = "oneshot";
+      RemainAfterExit = true;
+      ExecStart = pkgs.writeShellScript "setup-runtime" ''
+        mkdir -p /run/user/1000
+        chown 1000:users /run/user/1000
+        chmod 700 /run/user/1000
+      '';
+    };
+  };
+
+  # Set up PAM to create XDG_RUNTIME_DIR
+  # security.pam.services.login.text = ''
+  #   session required pam_systemd.so
+  # '';
+
   programs.zsh = {
     enable = true;
     enableCompletion = true;
     enableBashCompletion = true;
   };
+
+  users.groups.thomas-devel = {
+    gid = 1001;
+  };
   users.users.thomas-devel = {
     isNormalUser  = true;
     home  = "/home/thomas-devel";
     description  = "Developer User";
+    group = "thomas-devel";
     extraGroups  = [ "wheel" "networkmanager" ];
     uid = 1000; # this is the same user id as my user on the host
   };
