@@ -6,37 +6,50 @@
 
 {
 
+  time = {
+    timeZone = "America/Denver";
+  };
   environment.systemPackages = with pkgs; [
     stow
     git
     neovim
     starship
     wl-clipboard
+    openssh # Ensure ssh-agent is installed
+    man
   ];
 
   fonts.packages = with pkgs; [
     (nerdfonts.override { fonts = [ "0xProto" "CascadiaMono" "JetBrainsMono" ]; })
-    # nerdfonts._0xproto
-    # nerdfonts.caskaydia-mono
-    # nerdfonts.jetbrains-mono
   ];
 
 
   # Ensure proper runtime directory setup
-  systemd.services.setup-user-runtime = {
-    description = "Setup user runtime directories";
-    wantedBy = [ "multi-user.target" ];
-    before = [ "systemd-logind.service" ];
-    serviceConfig = {
-      Type = "oneshot";
-      RemainAfterExit = true;
-      ExecStart = pkgs.writeShellScript "setup-runtime" ''
-        mkdir -p /run/user/1000
-        chown 1000:users /run/user/1000
-        chmod 700 /run/user/1000
-      '';
-    };
+  # systemd.services.setup-user-runtime = {
+  #   description = "Setup user runtime directories";
+  #   wantedBy = [ "multi-user.target" ];
+  #   before = [ "systemd-logind.service" ];
+  #   serviceConfig = {
+  #     Type = "oneshot";
+  #     RemainAfterExit = true;
+  #     ExecStart = pkgs.writeShellScript "setup-runtime" ''
+  #       mkdir -p /run/user/1000
+  #       chown 1000:users /run/user/1000
+  #       chmod 700 /run/user/1000
+  #     '';
+  #   };
+  # };
+
+  programs.ssh = {
+    startAgent = true;
   };
+  #
+  # services.dbus.enable = true;
+  #
+  # # Also ensure systemd user services can work properly
+  # systemd.user.services = {
+  #   # This helps ensure the user session is properly initialized
+  # };
 
   # Set up PAM to create XDG_RUNTIME_DIR
   # security.pam.services.login.text = ''
@@ -54,6 +67,8 @@
   };
   users.users.thomas-devel = {
     isNormalUser  = true;
+    createHome = true;
+    useDefaultShell = true;
     home  = "/home/thomas-devel";
     description  = "Developer User";
     group = "thomas-devel";
@@ -90,4 +105,3 @@
   system.stateVersion = "24.11"; # Did you read the comment?
 
 }
-

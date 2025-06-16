@@ -1,4 +1,3 @@
-
 register_module "hypr"
 register_module "arch_core"
 register_module "git"
