@@ -2,9 +2,9 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
 format = """
+$hostname\
 [](surface0)\
 $os\
-$hostname\
 $username\
 [](bg:peach fg:surface0)\
 $directory\
@@ -35,8 +35,8 @@ palette = 'catppuccin_mocha'
 [hostname]
 ssh_only = false
 detect_env_vars=["CONTAINER_LXC"]
-style = "bold bg:surface0 fg:peach"
-format = '[ $hostname]($style)'
+style = "bold fg:peach"
+format = '[ \[$hostname\] ]($style)'
 disabled = false
 
 [palettes.gruvbox_dark]
