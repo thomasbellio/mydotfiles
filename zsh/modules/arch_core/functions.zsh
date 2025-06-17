@@ -1,3 +1,23 @@
+dev() {
+    if [ -z "$1" ]; then
+        echo "Usage: dev <container-name>"
+        return 1
+    fi
+
+    # Check if the container is running
+    if ! sudo lxc-info -n "$1" | grep -q "RUNNING"; then
+        echo "Container $1 is not running. Starting it..."
+        sudo lxc-start -n "$1"
+        if [ $? -ne 0 ]; then
+            echo "Error: Failed to start container $1." >&2
+            return 1
+        fi
+    fi
+
+    # Attach to the container
+    sudo lxc-attach -n "$1" -- su -l thomas-devel
+}
+
 base_64_encode(){
     $ENCODE=$(echo -n "$1" | base64)
     echo $ENCODE
