@@ -4,8 +4,8 @@
 format = """
 [](surface0)\
 $os\
-$hostname\
 $username\
+$hostname\
 [](bg:peach fg:surface0)\
 $directory\
 [](fg:peach bg:green)\
@@ -33,9 +33,9 @@ $line_break$character"""
 palette = 'catppuccin_mocha'
 
 [hostname]
-ssh_only = false
+ssh_only = true
 style = "bold bg:surface0 fg:peach"
-format = '[ \[$hostname\]]($style)'
+format = '[\[$hostname\]]($style)'
 disabled = false
 
 [palettes.gruvbox_dark]
