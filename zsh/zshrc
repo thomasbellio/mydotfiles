@@ -1,24 +1,27 @@
 # Source the feature manager
 source $DOTFILES_DIR/zsh/module-manager.zsh
 
-# Load the appropriate profile
-if [[ -f "$DOTFILES_DIR/zsh/profiles/$DOTFILES_ZSH_MODULE_PROFILE.zsh" ]]; then
-  _module_debug "Loading profile: $DOTFILES_ZSH_MODULE_PROFILE"
-  source "$DOTFILES_DIR/zsh/profiles/$DOTFILES_ZSH_MODULE_PROFILE.zsh"
-else
-  echo "Warning: Profile '$DOTFILES_ZSH_MODULE_PROFILE' not found, falling back to default"
-  if [[ -f "$DOTFILES_DIR/zsh/profiles/default.zsh" ]]; then
-    _module_debug "Loading default profile"
-    source "$DOTFILES_DIR/zsh/profiles/default.zsh"
+# Load the appropriate profiles
+IFS=';' read -rA PROFILES <<< "$DOTFILES_ZSH_MODULE_PROFILES"
+for PROFILE in "${PROFILES[@]}"; do
+  if [[ -f "$DOTFILES_DIR/zsh/profiles/$PROFILE.zsh" ]]; then
+    _module_debug "Loading profile: $PROFILE"
+    source "$DOTFILES_DIR/zsh/profiles/$PROFILE.zsh"
   else
-    echo "Error: Default profile not found!"
-    # Load core modules as fallback
-    register_module "core"
-    register_module "git"
-    register_module "prompt"
-    register_module "secrets"
+    echo "Warning: Profile '$PROFILE' not found, falling back to default"
+    if [[ -f "$DOTFILES_DIR/zsh/profiles/default.zsh" ]]; then
+      _module_debug "Loading default profile"
+      source "$DOTFILES_DIR/zsh/profiles/default.zsh"
+    else
+      echo "Error: Default profile not found!"
+      # Load core modules as fallback
+      register_module "core"
+      register_module "git"
+      register_module "prompt"
+      register_module "secrets"
+    fi
   fi
-fi
+done
 
 load_modules
 
