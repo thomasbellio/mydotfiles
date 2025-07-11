@@ -34,7 +34,7 @@ palette = 'catppuccin_mocha'
 
 [hostname]
 ssh_only = false
-detect_env_vars=["CONTAINER_LXC"]
+detect_env_vars=["IS_CONTAINER"]
 style = "bold fg:peach"
 format = '[ \[$hostname\] ]($style)'
 disabled = false
