@@ -1,1 +1,2 @@
-export ANDROID_HOME="/opt/android-sdk"
+export ANDROID_HOME="$HOME/.android-sdk"
+export PATH="$PATH:$ANDROID_HOME/cmdline-tools/latest/bin"
