@@ -6,5 +6,6 @@ export __GL_LOG_MAX_ANISO=0
 export __GL_SYNC_TO_VBLANK=1
 export __NVIDIA_DEBUG=1
 export GBM_BACKEND=nvidia-drm
+export QT_QPA_PLATFORM="wayland;xcb"
 export __GLX_VENDOR_LIBRARY_NAME=nvidia
 
