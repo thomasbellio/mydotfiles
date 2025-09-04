@@ -10,9 +10,24 @@ power_off() {
 
 start_machine() {
     local machine_name="$1"
+    local options="$2"
     local machine_dir="/run/user/1000/$machine_name"
-    local with_ui="$2"
-    local with_audio="$3"
+    local with_ui=false
+    local with_audio=false
+
+    # Parse options
+    IFS=',' read -ra opts <<< "${options#--with=}"
+    for opt in "${opts[@]}"; do
+        case "$opt" in
+            "ui")
+                with_ui=true
+                ;;
+            "audio")
+                with_audio=true
+                ;;
+        esac
+    done
+
     echo "Checking if the machine $machine_name is running..."
     # Check if the machine is already running
     if machinectl show "$machine_name" --property=State --value 2>/dev/null | grep -q "running"; then
@@ -32,19 +47,18 @@ start_machine() {
     local bind_options=("--bind=$machine_dir:/run/user/1000" "--bind-ro=/run/user/1000/bus:/run/user/1000/bus")
     echo "Default bind options: ${bind_options[@]}"
     echo "with ui: $with_ui"
-    if [ "$with_ui" = "--with-ui" ]; then
+    if [ "$with_ui" = true ]; then
         echo "Setting ui bindings..."
         ui_bind_options=("--bind-ro=/tmp/.X11-unix:/tmp/.X11-unix" "--bind-ro=/dev/kvm:/dev/kvm" "--bind=/dev/dri:/dev/dri" "--bind-ro=/run/user/1000/wayland-1:/run/user/1000/wayland-1")
         bind_options+=(${ui_bind_options[@]})
         echo "Set ui bind options: ${ui_bind_options[@]}"
     fi
 
-    if [ "$with_audio" = "--with-audio" ]; then
+    if [ "$with_audio" = true ]; then
         echo "Setting audio bindings ..."
         audio_bind_options=("--bind-ro=/sys/class/sound:/sys/class/sound" "--bind-ro=/proc/asound:/proc/asound" "--bind-ro=/sys/devices:/sys/devices" "--bind-ro=/lib/modules:/lib/modules"  "--bind-ro=/run/user/1000/pulse:/run/user/1000/pulse" "--bind-ro=/run/user/1000/pipewire-0.lock:/run/user/1000/pipewire-0.lock" "--bind-ro=/run/user/1000/pipewire-0-manager.lock:/run/user/1000/pipewire-0-manager.lock" "--bind-ro=/run/user/1000/pipewire-0-manager:/run/user/1000/pipewire-0-manager" "--bind-ro=/run/user/1000/pipewire-0:/run/user/1000/pipewire-0" "--bind-ro=/dev/snd:/dev/snd")
         bind_options+=(${audio_bind_options[@]})
         echo "Set audio bind options: ${audio_bind_options[@]}"
-
     fi
     echo "Starting machine with bind options: ${bind_options[@]}"
     sudo systemd-nspawn -D "/var/lib/machines/$machine_name" \
