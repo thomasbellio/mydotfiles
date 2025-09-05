@@ -71,6 +71,7 @@ start_machine() {
     local machine_dir="/run/user/1000/$machine_name"
     local with_ui=false
     local with_audio=false
+    local with_graphics=false
     local with_options=""
    # Parse arguments
     while [[ $# -gt 0 ]]; do
@@ -115,6 +116,10 @@ start_machine() {
 
             # Handle specific options
             case "$option" in
+                graphics)
+                    echo "enabling graphics support"
+                    with_graphics=true
+                    ;;
                 audio)
                     echo "Enabling audio support"
                     with_audio=true
@@ -147,13 +152,19 @@ start_machine() {
     else
         echo "$machine_dir already exists skipping creation..."
     fi
-
+    local properties=("--property=DeviceAllow=\"char-drm rw\"")
     local bind_options=("--bind=$machine_dir:/run/user/1000" "--bind-ro=/run/user/1000/bus:/run/user/1000/bus")
     echo "Default bind options: ${bind_options[@]}"
     echo "with ui: $with_ui"
+    if [ "$with_graphics" = true ]; then
+        graphic_bind_options=("--bind=/sys/module/nvidia" "--bind=/sys/module/nvidia_drm" "--bind=/sys/module/nvidia_modeset" "--bind=/sys/module/nvidia_uvm")
+        graphic_properties=("--property=DeviceAllow=\"/dev/kvm rw\"" "--property=DeviceAllow=\"/dev/nvidia0 rw\"" "--property=DeviceAllow=\"/dev/nvidia-modeset rw\"" "--property=DeviceAllow=\"/dev/nvidia-uvm rw\"" "--property=DeviceAllow=\"/dev/nvidia-uvm-tools rw\"" "--property=DeviceAllow=\"/dev/nvidiactl rw\"" "--property=DeviceAllow=\"/dev/shm rw\"")
+        bind_options+=${graphic_bind_options[@]}
+        properties+=${properties[@]}
+    fi
     if [ "$with_ui" = true ]; then
         echo "Setting ui bindings..."
-        ui_bind_options=( "--bind=/dev/shm:/dev/shm" "--bind-ro=/etc/X11/xorg.conf.d:/etc/X11/xorg.conf.d" "--bind-ro=/tmp/.X11-unix:/tmp/.X11-unix" "--bind=/dev/kvm:/dev/kvm" "--bind=/dev/dri:/dev/dri" "--bind-ro=/run/user/1000/wayland-1:/run/user/1000/wayland-1")
+        ui_bind_options=("--bind=/dev/nvidia0:/dev/nvidia0" "--bind=/dev/nvidia-modeset:/dev/nvidia-modeset" "--bind=/dev/nvidia-uvm:/dev/nvidia-uvm" "--bind=/dev/nvidia-uvm-tools:/dev/nvidia-uvm-tools" "--bind=/dev/nvidiactl:/dev/nvidiactl" "--bind=/dev/shm:/dev/shm" "--bind-ro=/etc/X11/xorg.conf.d:/etc/X11/xorg.conf.d" "--bind-ro=/tmp/.X11-unix:/tmp/.X11-unix" "--bind=/dev/kvm:/dev/kvm" "--bind=/dev/dri:/dev/dri" "--bind-ro=/run/user/1000/wayland-1:/run/user/1000/wayland-1")
         bind_options+=(${ui_bind_options[@]})
         echo "Set ui bind options: ${ui_bind_options[@]}"
     fi
@@ -168,8 +179,6 @@ start_machine() {
     sudo systemd-nspawn -D "/var/lib/machines/$machine_name" \
         --private-network --network-veth \
         ${bind_options[@]} \
-        --property=DeviceAllow="char-drm rw" \
-        --property=DeviceAllow="/dev/kvm rw" \
-        --property=DeviceAllow="/dev/shm rw" \
+        ${properties[@]} \
         --boot
 }
