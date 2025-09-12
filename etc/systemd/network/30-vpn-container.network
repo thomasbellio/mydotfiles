@@ -1,0 +1,6 @@
+[Match]
+Name=ve-vpn-service
+
+[Network]
+Bridge=vpnbridge0
+

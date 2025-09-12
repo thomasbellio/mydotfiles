@@ -1,0 +1,11 @@
+[Match]
+Name=cbridge0
+
+[Network]
+DHCPServer=yes
+IPv4Forwarding=yes
+IPv6Forwarding=yes
+IPMasquerade=both
+
+[Address]
+Address=10.0.1.1/24

@@ -1,8 +1,7 @@
 [Match]
-Name=cbridge0
+Name=adminbridge0
 
 [Network]
-DHCP=yes
 DHCPServer=yes
 IPv4Forwarding=yes
 IPv6Forwarding=yes
