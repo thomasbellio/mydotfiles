@@ -58,3 +58,22 @@ $ ip link show
 The network configuration is processed in alpha-numeric order so files with a name `30-vpn-container.network` will match devices before `40-cbridge0.network`.
 
 
+## Architecture
+
+The container network occupies the range `10.0.0.0/8` and is divided atm into 2 network spaces:
+
+**Admin Network**
+
+The admin network occupies `10.0.0.0/24`. This network is where services like the vpn and the ansible orchestrator lives. 
+
+The admin network has routes to all the other container networks and each network has a route back to the admin network.
+
+**Container Network**
+
+The container network occupies `10.0.1.0/24` and is where all other non administrative services live. 
+
+
+
+**DNS**
+
+

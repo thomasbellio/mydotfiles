@@ -1,6 +1,0 @@
-[Match]
-Name=*admin
-
-[Network]
-Bridge=adminbridge0
-
