@@ -16,5 +16,3 @@ Destination=10.0.0.0/24
 ; this is the bridge for the admin network
 Gateway=10.0.0.1
 
-[DHCPServer]
-DNS=10.0.1.1 10.0.0.1
