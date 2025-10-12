@@ -1,0 +1,26 @@
+[Match]
+Name=csvcbr0
+
+[Network]
+; Required to support ConfigureWithoutCarrier
+DHCP=no
+DHCPServer=yes
+IPMasquerade=both
+; Set to ensure that it can be configured without a carrier
+IPv6AcceptRA=false
+; This will ensure the link is set as configured even if no-carier is present
+; this is required to ensure that systemd-networkd-wait-online.service works correctly
+ConfigureWithoutCarrier=true
+
+
+[Link]
+; Ensures it will  show as online even if no-carrier
+RequiredForOnline=no-carrier
+
+[Address]
+Address=10.0.0.1/21
+DuplicateAddressDetection=none
+
+
+[DHCPServer]
+ServerAddress=10.0.0.2/21

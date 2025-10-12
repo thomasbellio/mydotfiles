@@ -1,0 +1,9 @@
+[Match]
+Name=ve-services-*
+
+[Network]
+Bridge=csvcbr0
+
+[Link]
+RequiredForOnline=no
+

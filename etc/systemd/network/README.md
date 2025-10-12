@@ -1,5 +1,36 @@
 # About
 
+Herein contains `.network` and `.netdev` files for my systemd-networkd configuration, specifically for configuring my container networks.
+
+
+## Container Networking
+
+I have subdivided my container network. Into a parent network at `10.0.0.0/21`, which is configured using a [bridge 'csvcbr0'](./30-container-services-bridge.netdev) and a [network for that bridge](./30-container-services-bridge.network).
+
+All nspawn containers that are started with the name 'services-*' will be launched into the [container services network](./35-container-services-dns.network)
+
+The [network link for bridge 'csvcbr0'](./30-container-services-bridge.network) is required for online, but won't have a carrier until one of the services is attached to it. Accordingly it has the parameter [ConfigureWithoutCarrier](https://www.freedesktop.org/software/systemd/man/latest/systemd.network.html#ConfigureWithoutCarrier=) set to true with all the documented dependent configuration set accordinly. 
+
+
+
+### Services Network 
+
+#### DNS
+
+The DNS service has a static ip address at `10.0.0.3/32`. The network on the container itself is configured using the file at `/etc/systemd/network/80-container-host0.network` and looks like this: 
+
+```ini
+[Match]
+Name=host0
+
+[Network]
+DHCP=yes
+Address=10.0.0.3/32
+```
+
+
+
+
 I use [systemd-networkd](https://wiki.archlinux.org/title/Systemd-networkd) to manage my local container network. 
 
 The container network is assigned to a [bridge device](https://wiki.archlinux.org/title/Network_bridge) that can be created using the [10-cbridge0.netdev](./10-cbridge0.netdev).

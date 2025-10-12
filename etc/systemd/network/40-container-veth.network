@@ -1,7 +1,0 @@
-[Match]
-Name=ve-*
-
-[Network]
-Bridge=cbridge0
-
-

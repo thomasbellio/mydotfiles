@@ -1,0 +1,13 @@
+[Unit]
+Description=Starts the nspawn dns service
+After=network-online.target systemd-networkd.service systemd-resolved.service
+Wants=network-online.target systemd-networkd.service systemd-resolved.service
+
+[Service]
+Type=notify
+ExecStart=/usr/bin/systemd-nspawn --quiet -D "/var/lib/machines/services-dns" --private-network --network-veth --property=DeviceAllow="char-drm rw" --boot
+KillMode=mixed
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
