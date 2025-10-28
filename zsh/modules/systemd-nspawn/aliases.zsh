@@ -15,6 +15,7 @@ start_machine() {
     local with_ui=false
     local with_audio=false
     local with_graphics=false
+    local with_bus_support=false
     local with_options=""
    # Parse arguments
     while [[ $# -gt 0 ]]; do
@@ -70,6 +71,10 @@ start_machine() {
                 ui)
                     echo "Enabling UI support"
                     with_ui=true
+                    ;;
+                bus-support)
+                    echo "Enabling bus support"
+                    with_bus_support=true
                     ;;
                 *)
                     echo "    Unknown option: $option"
@@ -135,6 +140,15 @@ start_machine() {
         audio_bind_options=("--bind-ro=/sys/class/sound:/sys/class/sound" "--bind-ro=/proc/asound:/proc/asound" "--bind-ro=/sys/devices:/sys/devices" "--bind-ro=/lib/modules:/lib/modules"  "--bind-ro=/run/user/1000/pulse:/run/user/1000/pulse" "--bind-ro=/run/user/1000/pipewire-0.lock:/run/user/1000/pipewire-0.lock" "--bind-ro=/run/user/1000/pipewire-0-manager.lock:/run/user/1000/pipewire-0-manager.lock" "--bind-ro=/run/user/1000/pipewire-0-manager:/run/user/1000/pipewire-0-manager" "--bind-ro=/run/user/1000/pipewire-0:/run/user/1000/pipewire-0" "--bind-ro=/dev/snd:/dev/snd")
         bind_options+=(${audio_bind_options[@]})
         echo "Set audio bind options: ${audio_bind_options[@]}"
+    fi
+
+    if [ "$with_bus_support" = true ]; then
+        echo "Setting bus support bindings..."
+        bus_bind_options=("--bind=/dev/bus/usb:/dev/bus/usb")
+        bus_properties=("--property=DeviceAllow=char-usb_device rwm")
+        bind_options+=(${bus_bind_options[@]})
+        properties+=(${bus_properties[@]})
+        echo "Set bus support bind options: ${bus_bind_options[@]}"
     fi
     echo "Starting machine with bind options: ${bind_options[@]}"
     echo "Starting machine with properties: ${properties[@]}"
