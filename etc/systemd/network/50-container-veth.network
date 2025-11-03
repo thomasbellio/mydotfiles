@@ -1,0 +1,12 @@
+[Match]
+Name=ve-*
+
+[Network]
+DHCPServer=yes
+Bridge=cbridge0
+DNS=10.0.0.2
+MulticastDNS=true
+
+[DHCPServer]
+RelayTarget=10.0.0.2/24
+

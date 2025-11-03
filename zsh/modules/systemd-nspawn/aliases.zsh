@@ -17,6 +17,7 @@ start_machine() {
     local with_graphics=false
     local with_bus_support=false
     local with_options=""
+    local custom_bind_options=()
    # Parse arguments
     while [[ $# -gt 0 ]]; do
         case $1 in
@@ -26,6 +27,22 @@ start_machine() {
                 ;;
             --with)
                 with_options="$2"
+                shift 2
+                ;;
+            --bind=*)
+                custom_bind_options+=("--bind=${1#--bind=}")
+                shift
+                ;;
+            --bind)
+                custom_bind_options+=("--bind=$2")
+                shift 2
+                ;;
+            --bind-ro=*)
+                custom_bind_options+=("--bind-ro=${1#--bind-ro=}")
+                shift
+                ;;
+            --bind-ro)
+                custom_bind_options+=("--bind-ro=$2")
                 shift 2
                 ;;
             *)
@@ -38,6 +55,9 @@ start_machine() {
     done
     echo "WITH OPTIONS: $with_options"
     echo "MACHINE NAME: $machine_name"
+    if [[ ${#custom_bind_options[@]} -gt 0 ]]; then
+        echo "CUSTOM BIND OPTIONS: ${custom_bind_options[@]}"
+    fi
 
         if [[ -z "$machine_name" ]]; then
         echo "Error: machine name is required"
@@ -150,6 +170,13 @@ start_machine() {
         properties+=(${bus_properties[@]})
         echo "Set bus support bind options: ${bus_bind_options[@]}"
     fi
+
+    # Add custom bind options to the final bind_options array
+    if [[ ${#custom_bind_options[@]} -gt 0 ]]; then
+        echo "Adding custom bind options: ${custom_bind_options[@]}"
+        bind_options+=(${custom_bind_options[@]})
+    fi
+
     echo "Starting machine with bind options: ${bind_options[@]}"
     echo "Starting machine with properties: ${properties[@]}"
     echo "sudo systemd-nspawn -D \"/var/lib/machines/$machine_name\" --private-network --network-veth ${bind_options[@]} ${properties[@]} --boot"

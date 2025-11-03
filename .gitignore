@@ -8,3 +8,7 @@ scratch.txt
 .envrc
 .zprofile
 tmp/
+logs/
+profiler_data/
+.sentinel/
+stow/obs-studio

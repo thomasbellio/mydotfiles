@@ -1,0 +1,24 @@
+[Match]
+Name=adminbridge0
+
+[Network]
+DHCPServer=yes
+; IPv4Forwarding=yes
+; IPv6Forwarding=yes
+IPMasquerade=both
+Gateway=10.0.0.0
+; DNS=10.0.0.2
+
+
+[Address]
+Address=10.0.1.0/24
+
+
+; [Route]
+; this is the route to the container network
+; Destination=10.0.1.0/24
+; this is the bridge for the container network cbridge0
+; Gateway=10.0.1.1
+
+[DHCPServer]
+ServerAddress=10.0.1.1/24
