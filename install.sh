@@ -7,3 +7,7 @@ if [ -f ~/.zshrc ]; then
 fi
 echo "installing new zshrc" &&
 ln -s  $(pwd)/zsh/zshrc ~/.zshrc
+
+
+cd "$(dirname "$0")/stow"
+stow -t ~ */
