@@ -13,3 +13,14 @@ sudo cp systemd/usr/lib/systemd/system/nspawn-dns.service
 
 sudo systemctl enable --nown nspawn-dns.service
 ```
+
+## DHCP
+
+There is a service unit configured to run an nspawn container as the dhcp service. Located at [./usr/lib/systemd/system/nspawn-dhcp.service](./usr/lib/systemd/system/nspawn-dhcp.service). To enable this service you can run this command from the root of this repository.
+
+
+```zsh
+sudo cp systemd/usr/lib/systemd/system/nspawn-dhcp.service
+
+sudo systemctl enable --nown nspawn-dhcp.service
+```

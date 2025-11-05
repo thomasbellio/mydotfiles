@@ -1,0 +1,9 @@
+[Match]
+Name=ve-qdev-*
+
+[Network]
+Bridge=cqdevbr0
+
+[Link]
+RequiredForOnline=no
+

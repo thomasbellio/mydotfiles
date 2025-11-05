@@ -1,0 +1,13 @@
+[Unit]
+Description=Starts the nspawn dhcp service
+After=network-online.target systemd-networkd.service systemd-resolved.service nspawn-dns.service
+Wants=network-online.target systemd-networkd.service systemd-resolved.service nspawn-dns.service
+
+[Service]
+Type=notify
+ExecStart=/usr/bin/systemd-nspawn --quiet -D "/var/lib/machines/services-dhcp" --private-network --network-veth --property=DeviceAllow="char-drm rw" --boot
+ExecStop=machinectl poweroff services-dhcp
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

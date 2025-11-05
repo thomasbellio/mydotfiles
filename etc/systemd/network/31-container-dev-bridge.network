@@ -1,0 +1,20 @@
+[Match]
+Name=cdevbr0
+
+[Network]
+DHCP=no
+DHCPServer=yes
+IPMasquerade=both
+
+[Link]
+; This is the default value but adding it here for the sake of being explicit
+RequiredForOnline=no
+
+
+[Address]
+Address=10.0.1.1/24
+DuplicateAddressDetection=none
+
+[DHCPServer]
+ServerAddress=10.0.1.2/24
+RelayTarget=10.0.0.4

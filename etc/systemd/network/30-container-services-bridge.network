@@ -17,10 +17,11 @@ ConfigureWithoutCarrier=true
 ; Ensures it will  show as online even if no-carrier
 RequiredForOnline=no-carrier
 
+
 [Address]
-Address=10.0.0.1/21
+Address=10.0.0.1/24
 DuplicateAddressDetection=none
 
-
 [DHCPServer]
-ServerAddress=10.0.0.2/21
+ServerAddress=10.0.0.2/24
+RelayTarget=10.0.0.4
