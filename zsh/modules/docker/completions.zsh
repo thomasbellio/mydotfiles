@@ -1,0 +1,1 @@
+eval "$(docker completion zsh)"

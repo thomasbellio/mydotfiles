@@ -1,4 +1,7 @@
 register_module "core"
+regisger_module "docker"
+register_module "brew"
+register_module "colima"
 register_module "git"
 register_module "nvim"
 register_module "prompt-starship"
