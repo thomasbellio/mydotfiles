@@ -20,13 +20,13 @@ Aside from improving overall productivity setting up an automated configuration 
 
 ## Organization
 
-This dotfiles repository is organized based on the logical systems and operating system configuration that is being deployed. The logical boundaries are generally organized by directories in the root of this repository. Generally each logical system can be configured from this repository on most unix based systems. There is a separate `macos` folder for anything that may be particular to that operation system.
+This dotfiles repository is organized based on the logical systems and operating system configuration that is being deployed. The logical boundaries are generally organized by directories in the root of this repository. Generally each logical system can be configured from this repository on most unix based systems. In anything that is particular for a particular operating system like macos can be found in the `operating-systems` folder.
 
 The logical systems include:
 
 * [etc](./etc/README.md)
 * [fonts](./fonts/README.md)
-* [macos](./macos/)
+* [operating-systems](./macos/)
 * [config](./config)
 * [systemd](./systemd/)
 * [shell](./shell/README.md)
