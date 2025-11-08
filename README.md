@@ -26,7 +26,7 @@ The logical systems include:
 
 * [etc](./etc/README.md)
 * [fonts](./fonts/README.md)
-* [operating-systems](./macos/)
+* [operating-systems](./operating-systems/macos/)
 * [config](./config)
 * [systemd](./systemd/)
 * [shell](./shell/README.md)
