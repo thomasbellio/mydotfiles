@@ -8,6 +8,7 @@ This setup requires a modern version of zsh as of this writing it was developed 
 ## Definitions
 
 **Module:** modules are logical groupings of configuration for a particular context. 
+
 **Profiles:** [profiles](./profiles/README.md) are logical groupings of [modules](./modules/README.md) that should be configured in the shell.
 
 
