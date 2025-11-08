@@ -1,1 +1,2 @@
-eval "$(docker completion zsh)"
+docker completion zsh > "${fpath[1]}/_docker"
+

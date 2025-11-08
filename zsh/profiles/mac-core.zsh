@@ -1,6 +1,6 @@
 register_module "core"
 register_module "git"
-regisger_module "docker"
+register_module "docker"
 register_module "brew"
 register_module "colima"
 register_module "nvim"
