@@ -28,3 +28,5 @@ The logical systems include:
 * [fonts](./fonts/README.md)
 * [macos](./macos/)
 * [config](./config)
+* [systemd](./systemd/)
+* [shell]()

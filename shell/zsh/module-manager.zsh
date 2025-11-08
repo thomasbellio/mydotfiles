@@ -1,7 +1,7 @@
 # feature-manager.zsh
 # central manager for modular ZSH configuration organized by application
 
-ZSH_MODULES_DIR="${DOTFILES_DIR}/zsh/modules"
+ZSH_MODULES_DIR="${DOTFILES_DIR}/shell/zsh/modules"
 # Define data structures
 typeset -gA ZSH_MODULE_DIRS       # Maps module name to its directory
 typeset -gA ZSH_REGISTERED_MODULES # Maps module name to its components (arrays)
