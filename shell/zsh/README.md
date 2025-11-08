@@ -16,9 +16,9 @@ This setup requires a modern version of zsh as of this writing it was developed 
 
 This shell configuration is oriented around the idea of [profiles](./profiles/README.md) which load [modules](./modules/README.md). 
 
-For instance you might have a dev profile that includes the [git module](./modules/git/README.md) and the [php module](./modules/php/README.md)
+For instance you might have a dev profile that includes the [git module](./modules/git/) and the [php module](./modules/php/)
 
-Details about the configuration and creationg of profiles and modules can be found [here](./profiles/README.md) and [here](./modules/README.md) 
+Details about the configuration and creation of profiles and modules can be found [here](./profiles/README.md) and [here](./modules/README.md) 
 
 ## Installation and Setup
 
