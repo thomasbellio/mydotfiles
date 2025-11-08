@@ -5,63 +5,48 @@ Herein lies all the configuration and setup for a zsh shell.
 This setup requires a modern version of zsh as of this writing it was developed against version zsh version `5.9`, though I have no reason to believe it shouldn't work for any modern zsh version.
 
 
+## Definitions
+
+**Module:** modules are logical groupings of configuration for a particular context. 
+**Profiles:** [profiles](./profiles/README.md) are logical groupings of [modules](./modules/README.md) that should be configured in the shell.
+
+
 ##  Organization
 
-This shell configuration is oriented around the idea of [profiles](./profiles/README.md)
+This shell configuration is oriented around the idea of [profiles](./profiles/README.md) which load [modules](./modules/README.md). 
 
+For instance you might have a dev profile that includes the [git module](./modules/git/README.md) and the [php module](./modules/php/README.md)
 
+Details about the configuration and creationg of profiles and modules can be found [here](./profiles/README.md) and [here](./modules/README.md) 
 
-This section contains the configuration for how I currently have my zsh terminal configured for my personal workstation.
+## Installation and Setup
 
-This is always a work in process and will evolve overtime. Currently I don't have a lot of automation for installation of various components but I will opportunistically add that capability as I have time.
+### Pre-requisites
 
-## Dependencies
+You will, of course, need a  modern version of [zsh](zsh.org) installed and you will need to be in a zsh shell to install and use this setup. 
 
-The zsh config has several tools that it loads below is a list of tools that you can install, if you want. You will need to follow separate install instrauctions for relevant dependencies.
+### Environment Config
 
-If you don't want those components you can just comment out the relevant components in the [zshconfig](./zshconfig)
+For this shell configuration to work properly you will need to set some environment variables in your `~/.zprofile` file or any place that will be sourced before `~/.zshrc`.
 
-Required:
+Each [module](./modules/README.md)  can define or require its own environment config in addition to the default config needed to bootstrap this system. Environment config on a per module basis can be found in the respective modules readme. 
 
-- [zsh](https://zsh.org)
-- [pure](https://github.com/sindresorhus/pure)
-- [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting/tree/master)
-- [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
+The following are the minimum necessary environment variables required to load this configuration: 
 
-Optional:
+```zsh
+# This will be dependent on where you cloned this repository
+export DOTFILES_DIR="$HOME/code/thomasbellio/mydotfiles"
 
-- [kubectl](https://kubernetes.io/docs/tasks/tools/)
-- [krew](https://github.com/kubernetes-sigs/krew)
-
-## Setup
-
-This setup requires that you have zsh installed and it is set as your default shell. To install on ubuntu simply run:
-
-```sh
-sudo apt update -y &&
-sudo apt install -y zsh
+# This parameter is optional and defaults to 0
+# When set to 1 you will see a detailed ouptut from the sourcing step to show what modules are loaded and when
+# The debug output is quite verbose, so this should only be set when something isn't working or when developing new modules
+export DOTFILES_ZSH_MODULE_DEBUG=1
 ```
 
-To set it as the default shell run:
+In addition to these environment variables you can also configure profiles including customizing the location from where profiles are sourced.
 
-```sh
-chsh -s $(which zsh)
+For more details on profiles you can see the documentation [here](./profiles/README.md) 
 
-```
-You will need to reboot after you change the shell.
+Once you have specified the `DOTFILES_DIR` and optionally the `DOTFILES_ZSH_MODULE_DEBUG` switch then you will need to add the [dotfile-zshrc](./zshrc) file to your home directory at `~/.zshrc`. You can do this either by 
 
-You have a couple of options for setting up locally. The simplest option is to copy the contents of [zshconfig](./zshconfig) to your `~/.zshrc` file.
 
-The second option is to create a symbolic link to the [zshconfig](./zshconfig)
-
-```sh
-ln -s /path/to/zshconfig $HOME/.zshrc
-```
-
-This will ensure that if you pull the latest files you will have what you need.
-
-Once you have added contents to the .zshrc file you will need to source the file
-
-```sh
-source $HOME/.zshrc
-```
