@@ -8,12 +8,12 @@ ZSH_PROFILES_DIR="${DOTFILES_ZSH_PROFILES_DIR:-$DOTFILES_DIR/shell/zsh/profiles}
 IFS=';' read -rA PROFILES <<< "$DOTFILES_ZSH_MODULE_PROFILES"
 for PROFILE in "${PROFILES[@]}"; do
   if [[ -f "$ZSH_PROFILES_DIR/$PROFILE.zsh" ]]; then
-    _module_debug "Loading profile: $PROFILE"
+    module_debug "Loading profile: $PROFILE"
     source "$ZSH_PROFILES_DIR/$PROFILE.zsh"
   else
     echo "Warning: Profile '$PROFILE' not found, falling back to default"
     if [[ -f "$ZSH_PROFILES_DIR/default.zsh" ]]; then
-      _module_debug "Loading default profile"
+      module_debug "Loading default profile"
       source "$ZSH_PROFILES_DIR/default.zsh"
     else
       echo "Error: Default profile not found!"
@@ -29,18 +29,18 @@ done
 load_modules
 
 # Display confirmation
-_module_debug "ZSH configuration loaded successfully"
+module_debug "ZSH configuration loaded successfully"
 
 # Load the appropriate profiles
 IFS=';' read -rA PROFILES <<< "$DOTFILES_ZSH_MODULE_PROFILES"
 for PROFILE in "${PROFILES[@]}"; do
   if [[ -f "$DOTFILES_DIR/shell/zsh/profiles/$PROFILE.zsh" ]]; then
-    _module_debug "Loading profile: $PROFILE"
+    module_debug "Loading profile: $PROFILE"
     source "$DOTFILES_DIR/shell/zsh/profiles/$PROFILE.zsh"
   else
     echo "Warning: Profile '$PROFILE' not found, falling back to default"
     if [[ -f "$DOTFILES_DIR/shell/zsh/profiles/default.zsh" ]]; then
-      _module_debug "Loading default profile"
+      module_debug "Loading default profile"
       source "$DOTFILES_DIR/shell/zsh/profiles/default.zsh"
     else
       echo "Error: Default profile not found!"
@@ -56,4 +56,4 @@ done
 load_modules
 
 # Display confirmation
-_module_debug "ZSH configuration loaded successfully"
+module_debug "ZSH configuration loaded successfully"

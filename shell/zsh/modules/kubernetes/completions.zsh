@@ -1,4 +1,4 @@
-_module_debug "Sourcing zsh/kubectl/completion.zsh"
+module_debug "Sourcing zsh/kubectl/completion.zsh"
 
 if hash kubectl 2>/dev/null; then
     source <(kubectl completion zsh)
@@ -201,4 +201,4 @@ _kubectl()
 if [ "$funcstack[1]" = "_kubectl" ]; then
 	_kubectl
 fi
-_module_debug "Sourced zsh/kubectl/completion.zsh"
+module_debug "Sourced zsh/kubectl/completion.zsh"
