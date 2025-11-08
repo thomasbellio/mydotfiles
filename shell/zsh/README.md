@@ -1,5 +1,16 @@
 # About
 
+Herein lies all the configuration and setup for a zsh shell. 
+
+This setup requires a modern version of zsh as of this writing it was developed against version zsh version `5.9`, though I have no reason to believe it shouldn't work for any modern zsh version.
+
+
+##  Organization
+
+This shell configuration is oriented around the idea of [profiles](./profiles/README.md)
+
+
+
 This section contains the configuration for how I currently have my zsh terminal configured for my personal workstation.
 
 This is always a work in process and will evolve overtime. Currently I don't have a lot of automation for installation of various components but I will opportunistically add that capability as I have time.
