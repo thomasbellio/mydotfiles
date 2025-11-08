@@ -97,8 +97,8 @@ function load_modules() {
 
   done
   # the +X enables tracing for debugging autoload -U +X bashcompinit && bashcompinit
-  #  autoload -Uz  compinit && compinit
-  #  autoload -U  bashcompinit && bashcompinit
+  _module_debug "Initializing completions"
+  autoload -Uz  compinit && compinit
   _module_debug "EXIT LOAD modules"
 }
 
