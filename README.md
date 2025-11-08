@@ -29,4 +29,7 @@ The logical systems include:
 * [macos](./macos/)
 * [config](./config)
 * [systemd](./systemd/)
-* [shell]()
+* [shell](./shell/README.md)
+
+Documentation for setup and usage for each of the logical systems can be found in the `README` for the respective system.
+
