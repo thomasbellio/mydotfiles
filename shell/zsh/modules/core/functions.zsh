@@ -1,9 +1,3 @@
-base_64_encode(){
-    $ENCODE=$(echo -n "$1" | base64)
-    echo $ENCODE
-    echo $ENCODE | pbcopy
-}
-
 my_ip() {
 	dig +short myip.opendns.com @resolver1.opendns.com
 }

@@ -4,30 +4,6 @@ source $DOTFILES_DIR/shell/zsh/module-manager.zsh
 # Set profiles directory
 ZSH_PROFILES_DIR="${DOTFILES_ZSH_PROFILES_DIR:-$DOTFILES_DIR/shell/zsh/profiles}"
 
-# Load the appropriate profiles
-IFS=';' read -rA PROFILES <<< "$DOTFILES_ZSH_MODULE_PROFILES"
-for PROFILE in "${PROFILES[@]}"; do
-  if [[ -f "$ZSH_PROFILES_DIR/$PROFILE.zsh" ]]; then
-    module_debug "Loading profile: $PROFILE"
-    source "$ZSH_PROFILES_DIR/$PROFILE.zsh"
-  else
-    echo "Warning: Profile '$PROFILE' not found, falling back to default"
-    if [[ -f "$ZSH_PROFILES_DIR/default.zsh" ]]; then
-      module_debug "Loading default profile"
-      source "$ZSH_PROFILES_DIR/default.zsh"
-    else
-      echo "Error: Default profile not found!"
-      # Load core modules as fallback
-      register_module "core"
-      register_module "git"
-      register_module "prompt"
-      register_module "secrets"
-    fi
-  fi
-done
-
-load_modules
-
 # Display confirmation
 module_debug "ZSH configuration loaded successfully"
 
@@ -53,7 +29,7 @@ for PROFILE in "${PROFILES[@]}"; do
   fi
 done
 
-load_modules
+mm_load_modules_
 
 # Display confirmation
 module_debug "ZSH configuration loaded successfully"

@@ -1,10 +1,10 @@
-cloneRepo "$DOTFILES_GIT_DEFAULT_URL/$DOTFILES_GIT_DEFAULT_USER/pure" "${HOME}/.zsh" "/pure/"
+clone_repo "$DOTFILES_GIT_DEFAULT_URL/$DOTFILES_GIT_DEFAULT_USER/pure" "${HOME}/.zsh" "/pure/"
 
 if [[ ! -d "${HOME}/.zsh/pure" ]]; then
     mkdir -p "${HOME}/.zsh/pure"
 fi
 
-cloneRepo "$DOTFILES_GIT_DEFAULT_URL/$DOTFILES_GIT_DEFAULT_USER/pure.git" "${HOME}/.zsh" "/pure/"
+clone_repo "$DOTFILES_GIT_DEFAULT_URL/$DOTFILES_GIT_DEFAULT_USER/pure.git" "${HOME}/.zsh" "/pure/"
 if [[ ! " ${fpath[@]} " =~ " ${HOME}/.zsh/pure " ]]; then
     fpath+=($HOME/.zsh/pure)
 fi

@@ -18,10 +18,6 @@ alias colorlog="awk 'BEGIN { RED=\"\033[0;31m\"; BLACK=\"\033[39m\"; YELLOW=\"\0
 export PATH="/usr/local/opt/openjdk/bin:/opt:$HOME/.local/bin:$PATH"
 
 export PAGER="less"
-if [[ -f $HOME/.cargo/env ]]; then
-    source $HOME/.cargo/env
-fi
-
 if command -v direnv &> /dev/null; then
     eval "$(direnv hook zsh)"
 fi
