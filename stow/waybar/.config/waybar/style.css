@@ -1,4 +1,4 @@
-@import "mocha.css"; 
+@import "mocha.css";
 
 * {
     font-family: "MesloLGS Nerd Font Mono Bold";
@@ -31,11 +31,12 @@ button {
 button:hover {
     background: inherit;
     color: @mauve;
-    border-top: 2px solid @mauve;
+    border-top: 2px solid @peach;
 }
 
 #workspaces button {
     padding: 0 4px;
+    color: @mauve;
 }
 
 #workspaces button.focused {
