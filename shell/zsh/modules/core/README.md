@@ -2,12 +2,6 @@
 
 The core module includes setups for an assortment of common functionality, bindings, aliases etc.
 
-## Limitations
-
-Currently all git clones are done using the `DOTFILES_GIT_DEFAULT_URL` and `DOTFILES_GIT_DEFAULT_USER`, which default to `https://github.com` and `thomasbellio` respectively.
-
-You can override these values in your `~/.zprofile` and ensure that you have forked the [ZSH Auto Suggestions Repository](https://github.com/thomasbellio/zsh-autosuggestions), [ZSH Syntax Highlighting Repository](https://github.com/thomasbellio/zsh-syntax-highlighting), [ZSH Syntax Highlighting Catppuccin Theme Repository](https://github.com/thomasbellio/zsh-syntax-highlighting-catpuccin).
-
 ## Dependencies
 
 * [neovim](https://neovim.io): this will configure some aliases that depend on neovim

@@ -32,15 +32,13 @@ This repository is still in active development, so I haven't always followed my 
 ## Helper Functions
 
 There are several [helper functions](../helper-functions.zsh) defined that can be used at various phases of the module/profile lifecycle. 
-
 | Name | Parameters | Description |
 |------|------------|-------------|
 | **source_module** | 0 parameters | On a per module basis this function should only be called once and should live in the modules `init.zsh`. This function will source all `.zsh` files located inside the module directory. |
 | **register_module** | 1 parameter: `{module-name}` | This function is intended to be called inside a profile file. Its job is to record which modules will be sourced, this does not actually source the module, it just ensures it is recorded. This method can be called multiple time, each module registered will only be registered one time even with multiple calls with the same parameters. |
 | **module_debug** | 1 parameter: `{message}` | This function is for logging messages during the overall system lifecycle and it may be called at anytime in a module, a profile, or any other spot within the sourcing process. Output will only be shown if the environment variable: `DOTFILES_ZSH_MODULE_DEBUG` is set and has a value of 1. Output will be in the form of "[DEBUG] {message}". |
+| **module_error** | 1 parameter: `{message}` | This function will write an error message using echo in the format "[ERROR] {message}", unlike module_debug it will always write to stdout. |
 | **clone_repo** | Not specified | This function will clone a repository, if the target directory doesn't already exist. If the target directory already exists then it will do nothing. When `DOTFILES_ZSH_MODULE_DEBUG` is true, then it will give detailed output about what repository is being cloned and to what directory. |
-
-
 ## TODO
 
 * In the future I want to explore having module dependencies that may include the ability to express dependencies between modules

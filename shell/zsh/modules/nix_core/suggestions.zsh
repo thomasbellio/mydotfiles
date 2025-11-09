@@ -1,4 +1,7 @@
-clone_repo "$DOTFILES_GIT_DEFAULT_URL/$DOTFILES_GIT_DEFAULT_USER/zsh-autosuggestions.git" "${DOTFILES_SHELL_PLUGINS_DIR}" "zsh-autosuggestions"
-source ${DOTFILES_SHELL_PLUGINS_DIR}/zsh-autosuggestions/zsh-autosuggestions.zsh
+if [[ -f "${DOTFILES_SHELL_PLUGINS_DIR}/zsh-autosuggestions/zsh-autosuggestions.zsh" ]]; then
+    source ${DOTFILES_SHELL_PLUGINS_DIR}/zsh-autosuggestions/zsh-autosuggestions.zsh
+else
+    module_error "File does not exist: ${DOTFILES_SHELL_PLUGINS_DIR}/zsh-autosuggestions/zsh-autosuggestions.zsh"
+fi
 
 

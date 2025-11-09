@@ -34,6 +34,10 @@ function module_debug() {
   [[ $DOTFILES_ZSH_MODULE_DEBUG -eq 1 ]] && echo "[DEBUG] $@"
 }
 
+function module_error() {
+    echo "[ERROR] $@"
+}
+
 # Function to register a module with its dependencies
 function register_module() {
   module_debug "ENTER REGISTER MODULE"

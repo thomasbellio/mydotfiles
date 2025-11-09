@@ -1,4 +1,5 @@
 register_module "core"
+register_module "helpers"
 register_module "git"
 register_module "docker"
 register_module "brew"
