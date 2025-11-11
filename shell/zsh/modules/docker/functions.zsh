@@ -48,4 +48,49 @@ docker_shell() {
     docker exec -it --user "${userName}" --workdir "${workdir}" "${containerName}" zsh -l
 }
 
+docker_stop() {
+    local containerName
+    local clean_flag=false
 
+    # Parse arguments
+    while [[ $# -gt 0 ]]; do
+        case $1 in
+            --clean)
+                clean_flag=true
+                shift
+                ;;
+            *)
+                containerName="$1"
+                shift
+                ;;
+        esac
+    done
+
+    # Check if container name was provided
+    if [[ -z "${containerName}" ]]; then
+        echo "Container name is required" >&2
+        return 1
+    fi
+
+    # Check if container is running
+    if docker ps --format "table {{.Names}}" | grep -q "^${containerName}$"; then
+        echo "Stopping container '${containerName}'"
+        docker stop "${containerName}"
+    elif docker ps -a --format "table {{.Names}}" | grep -q "^${containerName}$"; then
+        echo "Container '${containerName}' is not running"
+    else
+        echo "Container '${containerName}' does not exist" >&2
+        return 1
+    fi
+
+    # Remove container if --clean flag is set
+    if [[ "${clean_flag}" == true ]]; then
+        if docker ps -a --format "table {{.Names}}" | grep -q "^${containerName}$"; then
+            echo "Removing container '${containerName}'"
+            docker rm "${containerName}"
+        else
+            echo "Container '${containerName}' does not exist to remove" >&2
+            return 1
+        fi
+    fi
+}
