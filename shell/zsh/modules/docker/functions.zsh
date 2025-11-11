@@ -1,0 +1,51 @@
+docker_start() {
+    local image="$1"
+    local containerName="$2"
+    local user="$3"
+    shift 3
+    local volumes=("$@")
+
+    # Check if container with the same name is already running
+    if docker ps --format "table {{.Names}}" | grep -q "^${containerName}$"; then
+        echo "Container '${containerName}' is already running"
+        return 0
+    fi
+
+    # Build docker run command
+    local docker_cmd="docker run -d --name ${containerName} --user ${user}"
+
+    # Add volume mounts if provided
+    for volume in "${volumes[@]}"; do
+        docker_cmd="${docker_cmd} -v ${volume}"
+    done
+
+    # Add image and command
+    docker_cmd="${docker_cmd} ${image} /bin/sh -c 'sleep infinity'"
+
+    # Execute the command
+    eval $docker_cmd
+}
+
+docker_shell() {
+    local containerName="$1"
+    local userName="$2"
+
+    # Check if container exists and is running
+    if ! docker ps --format "table {{.Names}}" | grep -q "^${containerName}$"; then
+        echo "Container '${containerName}' is not running or does not exist" >&2
+        return 1
+    fi
+
+    # Determine working directory based on user
+    local workdir
+    if [[ "${userName}" == "root" ]]; then
+        workdir="/root"
+    else
+        workdir="/home/${userName}"
+    fi
+
+    # Execute zsh login shell in the container
+    docker exec -it --user "${userName}" --workdir "${workdir}" "${containerName}" zsh -l
+}
+
+
