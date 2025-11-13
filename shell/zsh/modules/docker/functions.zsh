@@ -12,7 +12,7 @@ docker_start() {
     fi
 
     # Build docker run command
-    local docker_cmd="docker run -d --name ${containerName} --user ${user}"
+    local docker_cmd="docker run --add-host=host.docker.internal:host-gateway -d --name ${containerName} --user $(id -u):$(id -g)"
 
     # Add volume mounts if provided
     for volume in "${volumes[@]}"; do
