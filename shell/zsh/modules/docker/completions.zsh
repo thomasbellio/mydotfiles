@@ -1,2 +1,2 @@
-docker completion zsh > "${fpath[1]}/_docker"
+docker completion zsh > "${HOME}/.zsh/completions/_docker"
 
