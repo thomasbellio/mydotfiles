@@ -1,4 +1,6 @@
 register_module "arch_core"
+register_module "helpers"
+register_module "avante"
 register_module "ssh"
 register_module "git"
 register_module "nvim"
