@@ -1,4 +1,5 @@
 register_module "hypr"
+register_module "avante"
 register_module "arch_core"
 register_module "helpers"
 register_module "git"
