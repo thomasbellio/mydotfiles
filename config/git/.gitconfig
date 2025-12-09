@@ -1,7 +1,7 @@
 [core]
 	editor = nvim
 [user]
-	email = thomas@thomasbell.io
+	email = git@thomasbell.io
 	name = Thomas Bell
 [init]
 	defaultBranch = master
