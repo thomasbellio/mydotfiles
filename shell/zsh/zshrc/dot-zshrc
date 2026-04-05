@@ -33,3 +33,4 @@ mm_load_modules_
 
 # Display confirmation
 module_debug "ZSH configuration loaded successfully"
+export PATH="$PATH:$HOME/go/bin"
