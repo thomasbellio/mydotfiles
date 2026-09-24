@@ -22,6 +22,10 @@
 font-family = CaskaydiaCove Nerd Font Mono
 font-feature = -calt, -liga, -dlig # disable font ligatures
 theme = light:catppuccin-latte-custom,dark:catppuccin-mocha-custom
+
+clipboard-write = allow
+clipboard-read = allow
+
 # window-padding-x = 2
 #
 # # Spacing around the equals sign does not matter.
