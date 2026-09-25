@@ -4,7 +4,7 @@ Name=csvcbr0
 [Network]
 ; Required to support ConfigureWithoutCarrier
 DHCP=no
-DHCPServer=yes
+DHCPServer=no
 IPMasquerade=both
 ; Set to ensure that it can be configured without a carrier
 IPv6AcceptRA=false
@@ -18,10 +18,17 @@ ConfigureWithoutCarrier=true
 RequiredForOnline=no-carrier
 
 
+; Primary bridge address - listed first so it stays the primary/source address
 [Address]
 Address=10.0.0.1/24
 DuplicateAddressDetection=none
 
-[DHCPServer]
-ServerAddress=10.0.0.2/24
-RelayTarget=10.0.0.4
+; DHCP relay agent address - systemd >= 261 requires the relay agent
+; address to be configured as a static address on the link
+;[Address]
+;Address=10.0.0.2/24
+;DuplicateAddressDetection=none
+
+;[DHCPServer]
+;ServerAddress=10.0.0.2/24
+;RelayTarget=10.0.0.4

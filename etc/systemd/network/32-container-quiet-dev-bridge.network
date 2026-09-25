@@ -11,8 +11,15 @@ IPMasquerade=both
 RequiredForOnline=no
 
 
+; Primary bridge address - listed first so it stays the primary/source address
 [Address]
 Address=10.0.2.1/24
+DuplicateAddressDetection=none
+
+; DHCP relay agent address - systemd >= 261 requires the relay agent
+; address to be configured as a static address on the link
+[Address]
+Address=10.0.2.2/24
 DuplicateAddressDetection=none
 
 [DHCPServer]
