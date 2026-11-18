@@ -1,3 +1,11 @@
+paste() {
+    if [ -n "$1" ]; then
+        wl-paste | cat > "$1"
+    else
+        wl-paste
+    fi
+}
+
 my_ip() {
 	dig +short myip.opendns.com @resolver1.opendns.com
 }
