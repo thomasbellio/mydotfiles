@@ -1,9 +1,5 @@
 paste() {
-    if [ -n "$1" ]; then
-        wl-paste | cat > "$1"
-    else
-        wl-paste
-    fi
+    wl-paste | cat
 }
 
 my_ip() {
